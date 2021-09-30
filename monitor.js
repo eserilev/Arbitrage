@@ -7,13 +7,11 @@ async function start(_buyToken, _sellToken, _dex1, _dex2) {
     const params1 = {
         buyToken: _buyToken,
         sellToken: _sellToken,
-        sellAmount: '1000000000000000000',
+        buyAmount: '1000000000000000000',
         includedSources: _dex1
     }
 
     const response1 = await fetch(`https://ropsten.api.0x.org/swap/v1/quote?${qs.stringify(params1)}`);
-
-    console.log(response1.status);
 
     if(response1.status !== 200) return;
     var DEX1 = await response1.json();
@@ -27,7 +25,8 @@ async function start(_buyToken, _sellToken, _dex1, _dex2) {
     }
 
     const response2 = await fetch(`https://ropsten.api.0x.org/swap/v1/quote?${qs.stringify(params2)}`);
-
+    if(response2.status !== 200) return;
+    
     var DEX2 = await response2.json();
 
     let price1 = parseFloat(DEX1["price"].toString()).toFixed(8);
