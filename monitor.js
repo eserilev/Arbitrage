@@ -20,7 +20,7 @@ async function start(_buyToken, _sellToken, _dex1, _dex2) {
     const params2 = {
         buyToken: _buyToken,
         sellToken: _sellToken,
-        buyAmount: '1000000000000000000',
+        sellAmount: '1000000000000000000',
         includedSources: _dex2
     }
 
